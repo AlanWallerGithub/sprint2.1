@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Al pulsar el botón "COMPRAR", se realizará una compra. Pero para evitar que el usuario accidentalmente pulse el botón dos veces y compre el artículo dos veces, solo permitiremos que el botón se pulse cuando hayan terminado los clics del usuario, cuando haya pasado un tiempo desde que el usuario ha hecho clic por última vez. Así, simplemente se recibirá el último clic de una cadena de clics.</p>
+    <p>Prueba a acumular varias compras.</p>
+    <button onclick="comprar()">COMPRAR</button>
+    <p id="mostrar"></p>
+
+
+
+    <script src="./debounce_HTML.js"></script>
+</body>
+</html>
