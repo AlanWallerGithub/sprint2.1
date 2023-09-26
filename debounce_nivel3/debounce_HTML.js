@@ -1,6 +1,9 @@
 "use strict";
 function imprimirInput() {
-    document.getElementById("mostrar").innerHTML += "COMPRA REALIZADA" + "<br>";
+    let elementoHTML = document.getElementById('mostrar');
+    if (elementoHTML) {
+        return elementoHTML.innerHTML += "COMPRA REALIZADA" + "<br>";
+    }
 }
 const debounce = (callback, limit) => {
     let timeoutDebounce;
@@ -9,7 +12,10 @@ const debounce = (callback, limit) => {
             clearTimeout(timeoutDebounce);
         }
         if (typeof (callback) !== 'function') {
-            return document.getElementById("mostrar").innerHTML = "ERROR: el callback debe ser una función";
+            let elementoHTML = document.getElementById('mostrar');
+            if (elementoHTML) {
+                return elementoHTML.innerHTML = "ERROR: el callback debe ser una función";
+            }
         }
         else
             timeoutDebounce = setTimeout(() => {

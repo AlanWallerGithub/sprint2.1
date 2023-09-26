@@ -3,14 +3,16 @@ import readline from 'readline';
 const rl = readline.createInterface({input : process.stdin,
                          output : process.stdout});
 
+type callbackTipo = () => void;
+
 function imprimirInput(){
     
     return console.log("\nPara salir del loop, pulsa barra espaciadora");
 }
 
-const debounce: object = (callback: object, limit: number) => {
+const debounce = (callback: callbackTipo, limit: number) => {
 
-    let timeoutDebounce: NodeJS.Timer;
+    let timeoutDebounce: ReturnType<typeof setTimeout>;
 
     return function(){
         if (timeoutDebounce){
@@ -37,7 +39,7 @@ const debounce: object = (callback: object, limit: number) => {
     
 }
 
-const imprimirConDebounce: object = debounce(imprimirInput,1000);
+const imprimirConDebounce = debounce(imprimirInput,1000);
 
 function funcionCLI(){
     console.log("Pulsa cualquier tecla del teclado, tantas veces como quieras. Solo se ejecutará la última vez que lo hayas pulsado, cuando pase un segundo desde esa vez");
@@ -46,13 +48,13 @@ stdin.setRawMode( true );
 stdin.resume();
 stdin.setEncoding( 'utf8' );
 
-stdin.on( 'data', function( key ){
+stdin.on( 'data', function( key: Buffer ){
+    let bufferUTF8 = key.toString('utf8');
   // El loop se rompe con BARRA ESPACIADORA
-  if ( key === '\u0020' ) {
+  if ( bufferUTF8 === '\u0020' ) {
 
     process.exit();
   }
-  
   imprimirConDebounce();
 });
 }

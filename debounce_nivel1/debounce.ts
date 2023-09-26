@@ -8,7 +8,7 @@ function imprimirInput(inputUsuarioParametro: string){
 const debounce: object = (callback: object, limit: number) => {
 
     
-    let timeoutDebounce: NodeJS.Timer;
+    let timeoutDebounce: ReturnType<typeof setTimeout>;
 
     return function(){
 
